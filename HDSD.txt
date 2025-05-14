@@ -1,0 +1,29 @@
+✅ 1. 🔧 Cài đặt Node.js
+- Truy cập: https://nodejs.org
+- Tải bản LTS (nên chọn).
+- Cài đặt như phần mềm thông thường, chọn tích hợp PATH.
+👉 Sau khi cài xong, kiểm tra:
+node -v
+npm -v
+Nếu ra phiên bản là OK.
+
+✅ 2. Mở CMD (với quyền Admin) và truy cập thư mục dự án
+cd recall-tool
+
+✅ 3. Cài đặt các package cần thiết
+npm install viem @recallnet/sdk @recallnet/chains
+
+✅ 4. Đảm bảo có các file cần thiết
+recall-tool/
+├── tool.js
+├── private_key.txt        ← chứa private key mỗi dòng
+├── image/                 ← chứa ảnh JPG/PNG
+│   ├── img1.jpg
+│   ├── img2.png
+└── package.json
+
+✅ 5. Nhập private key vào private_key.txt
+Nhập private key của ví cá nhân cần chạy vào file private_key.txt, mỗi dòng là 1 key theo định dạng: 0x + key
+
+✅ 6. Chạy file tool.js
+node tool.js
