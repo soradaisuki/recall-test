@@ -52,18 +52,18 @@ const runTaskForWallet = async (privateKey, index) => {
   const creditManager = client.creditManager();
   const { meta: creditMeta } = await creditManager.buy(creditAmount);
   console.log(`✅ Ví ${index + 1}: Mua credit (${creditAmount}) thành công. TX: ${creditMeta?.tx?.transactionHash}`);
-  await delay(randInt(20000, 60000));
+  await delay(randInt(65000, 150000));
 
   // 2. Tạo bucket
   const bucketManager = client.bucketManager();
   const { result: { bucket } } = await bucketManager.create();
   console.log(`✅ Ví ${index + 1}: Tạo bucket thành công. Bucket ID: ${bucket}`);
-  await delay(randInt(20000, 60000));
+  await delay(randInt(65000, 150000));
 
   // 3. Truy vấn object
   const { result: { objects } } = await bucketManager.query(bucket, { prefix: '' });
   console.log(`✅ Ví ${index + 1}: Truy vấn bucket thành công, hiện có ${objects.length} object.`);
-  await delay(randInt(20000, 60000));
+  await delay(randInt(65000, 150000));
 
   // 4. Thêm object
   const { buffer, name } = getRandomImage();
@@ -73,7 +73,7 @@ const runTaskForWallet = async (privateKey, index) => {
   console.log(`✅ Ví ${index + 1}: Thêm object (${key}) vào bucket thành công. TX: ${addMeta?.tx?.transactionHash}`);
 
   // Delay giữa ví
-  const rest = randInt(30000, 150000);
+  const rest = randInt(90000, 210000);
   console.log(`🎉 Ví ${index + 1} hoàn thành. Nghỉ ${Math.floor(rest / 1000)}s trước khi xử lý ví tiếp theo.`);
   await delay(rest);
 };
