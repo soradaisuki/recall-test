@@ -7,7 +7,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { Blob } from 'buffer';
 
-globalThis.Blob = Blob; // Fix cho lỗi File trong Node.js
+globalThis.Blob = Blob;
 globalThis.File = class File extends Blob {
   constructor(chunks, filename, options = {}) {
     super(chunks, options);
@@ -16,11 +16,9 @@ globalThis.File = class File extends Blob {
   }
 };
 
-// Setup đường dẫn hiện tại
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Delay và Random
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 const randInRange = (min, max) => Math.random() * (max - min) + min;
 const randInt = (min, max) => Math.floor(randInRange(min, max));
@@ -80,7 +78,6 @@ const runTaskForWallet = async (privateKey, index) => {
   await delay(rest);
 };
 
-// Hàm chính
 const main = async () => {
   const privateKeys = fs.readFileSync(path.join(__dirname, 'private_key.txt'), 'utf-8')
     .split('\n')
